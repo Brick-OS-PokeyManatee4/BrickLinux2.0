@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: grub
-        run: cd /boot && ls
+        run: rm -r *.keep && cd /boot && ls
