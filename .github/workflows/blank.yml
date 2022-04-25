@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: grub
-        run: rm -r *.keep && cd /boot && ls
+        run: find -name '*.keep' -exec rm {} \; && cd /boot && ls
