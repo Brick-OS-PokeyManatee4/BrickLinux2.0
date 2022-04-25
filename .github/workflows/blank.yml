@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: grub
-        run: find -name '*.keep' -exec rm {} \; && cd /boot && ls
+        run: cd build_root && mknod -m 600 ./dev/console c 5 1 && mknod -m 666 ./dev/null c 1 3
