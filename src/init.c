@@ -20,7 +20,7 @@ void delay(int ticks) {
 }
 
 void print_string(char *str) {
-    _syscall(SYS_write, (void *)1 /*stdout*/, str, (void *)_strlen(str), 0, 0, 0);
+    _syscall(SYS_write, (void *)1 , str, (void *)_strlen(str), 0, 0, 0);
 }
 
 unsigned long open_file(char *fn, int flags) {
@@ -32,19 +32,16 @@ unsigned long read_file(unsigned long fd, char *buff, unsigned long size) {
 }
 
 int main() {
-    char *msg = "BrickLinux2.0 Initializing...\n";
 
     delay(1000000000);
 
-    print_string(msg);
+    print_string("BrickLinux2.0 Initializing...\n");
 
     delay(1000000000);
 
     char buff[255];
     char *filename = "/etc/boot-text.txt";
 
-    print_string("Opening file: ");
-    print_string(filename);
     print_string("\n");
 
     unsigned long fd = open_file(filename, O_RDONLY);
@@ -54,9 +51,8 @@ int main() {
     print_string(buff);
 
     while(1) {
-        //event loop, for now just tick...
         delay(1000000000);
-        print_string("TICK!\n");
+        print_string("BrickLinux2.0 Initialized...\n");
     }
 
     return 0;
